@@ -164,7 +164,7 @@
     }
   });
 
-  /* ---------- share: each post gets a stable id; papers share the paper, others a link to the post ---------- */
+  /* ---------- share: each post gets a stable id, and sharing links to the post on this page ---------- */
   function hashId(str) { var h = 5381; for (var i = 0; i < str.length; i++) h = ((h << 5) + h + str.charCodeAt(i)) >>> 0; return 'post-' + h.toString(36); }
   var used = {};
   $$('article.post').forEach(function (p) {
@@ -183,8 +183,7 @@
   function openMenu(b) {
     var post = b.closest('article.post'), paper = post.matches('[data-tweet]');
     var text = ($('.tw-text', post) || post).textContent.replace(/\s+/g, ' ').trim();
-    var link = paper && $('.tw-links a', post);
-    var url = link ? link.href : location.origin + location.pathname + '#' + post.id;
+    var url = location.origin + location.pathname + '#' + post.id; // always the post on this page
     shareData = { title: paper ? $('.embed-t', post).textContent : document.title, text: text.length > 200 ? text.slice(0, 197) + '…' : text, url: url };
     var enc = encodeURIComponent;
     menu.innerHTML =
