@@ -186,11 +186,15 @@
     var url = location.origin + location.pathname + '#' + post.id; // always the post on this page
     shareData = { title: paper ? $('.embed-t', post).textContent : document.title, text: text.length > 200 ? text.slice(0, 197) + '…' : text, url: url };
     var enc = encodeURIComponent;
-    menu.innerHTML =
+    // phones: same-tab links so iOS/Android can hand them to the installed X / LinkedIn app,
+    // and the native share sheet (which lists the apps) comes first
+    var phone = matchMedia('(pointer: coarse)').matches, tgt = phone ? '' : ' target="_blank"';
+    var native = navigator.share ? '<button type="button" role="menuitem" data-share="native">' + ico('share') + 'Share via…</button>' : '';
+    menu.innerHTML = (phone ? native : '') +
       '<button type="button" role="menuitem" data-share="copy">' + ico('link') + 'Copy link</button>' +
-      '<a role="menuitem" target="_blank" rel="noopener" href="https://x.com/intent/post?text=' + enc(shareData.text) + '&url=' + enc(url) + '">' + ico('at') + 'Share on X</a>' +
-      '<a role="menuitem" target="_blank" rel="noopener" href="https://www.linkedin.com/sharing/share-offsite/?url=' + enc(url) + '">' + ico('brief') + 'Share on LinkedIn</a>' +
-      (navigator.share ? '<button type="button" role="menuitem" data-share="native">' + ico('share') + 'Share via…</button>' : '');
+      '<a role="menuitem"' + tgt + ' rel="noopener" href="https://x.com/intent/post?text=' + enc(shareData.text) + '&url=' + enc(url) + '">' + ico('at') + 'Share on X</a>' +
+      '<a role="menuitem"' + tgt + ' rel="noopener" href="https://www.linkedin.com/sharing/share-offsite/?url=' + enc(url) + '">' + ico('brief') + 'Share on LinkedIn</a>' +
+      (phone ? '' : native);
     menu.hidden = false; shareBtn = b; b.setAttribute('aria-expanded', 'true');
     var r = b.getBoundingClientRect(), w = menu.offsetWidth, h = menu.offsetHeight;
     var top = r.bottom + 6 + h > innerHeight ? r.top - h - 6 : r.bottom + 6;
