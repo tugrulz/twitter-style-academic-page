@@ -1,0 +1,43 @@
+# Talks and panels. kind: talk, panel, seminar, ... card: optional link preview (youtube: VIDEO_ID shows a thumbnail).
+- kind: seminar
+  html: >-
+    Invited teaching seminar, Johns Hopkins SAIS — <em>Conflicts and Cultures in Contemporary Turkey</em> (Lisel Hintz)
+- kind: panel
+  html: >-
+    Panelist, “Unmasking the Digital Deception: Defending Against DeepFakes and Disinformation Attacks” — <a href="https://appliedmldays.org/all-time-speakers/tugrulcan-elmas">Applied Machine Learning Days (AMLD) 2025</a>, EPFL
+  card:
+    url: https://appliedmldays.org/all-time-speakers/tugrulcan-elmas
+    host: appliedmldays.org
+    title: Applied Machine Learning Days (AMLD) 2025
+    image: /assets/img/cards/appliedmldays-org-5cedf1.jpg
+- kind: panel
+  html: Panelist, <a href="https://www.youtube.com/watch?v=KKTzTEhKyX0">AIM Lab Roundtable Discussion</a>
+  card:
+    url: https://www.youtube.com/watch?v=KKTzTEhKyX0
+    host: youtube.com
+    title: AIM Lab Roundtable Discussion
+    youtube: KKTzTEhKyX0
+- kind: talk
+  html: >-
+    Invited speaker, <a href="https://ais.bilkent.edu.tr/events/tugrulcan-elmas.html">Bilkent AI Tech Talks</a> — Artificial Intelligence and Social Media
+  card:
+    url: https://ais.bilkent.edu.tr/events/tugrulcan-elmas.html
+    host: ais.bilkent.edu.tr
+    title: Bilkent AI Tech Talks
+    image: /assets/img/cards/ais-bilkent-edu-tr-40f4ef.jpg
+- kind: talk
+  html: >-
+    Speaker &amp; panelist, <a href="https://efi.ed.ac.uk/event/annual-data-conference-2024-data-deepfakes-and-democracy/">The Scotsman Data Conference 2024: Data, Deepfakes and Democracy</a>, Edinburgh
+  card:
+    url: https://efi.ed.ac.uk/event/annual-data-conference-2024-data-deepfakes-and-democracy/
+    host: efi.ed.ac.uk
+    title: 'The Scotsman Data Conference 2024: Data, Deepfakes and Democracy'
+    image: /assets/img/cards/efi-ed-ac-uk-2e47ae.jpg
+- kind: talk
+  html: >-
+    Speaker &amp; panelist, <a href="https://www.hbku.edu.qa/en/mec2024">HBKU Middle East Conference 2024: Gender, Technology, and Digital Cultures in the Middle East</a>, Doha
+  card:
+    url: https://www.hbku.edu.qa/en/mec2024
+    host: hbku.edu.qa
+    title: 'HBKU Middle East Conference 2024: Gender, Technology, and Digital Cultures in the Middle East'
+    image: /assets/img/cards/hbku-edu-qa-a9d03c.jpg

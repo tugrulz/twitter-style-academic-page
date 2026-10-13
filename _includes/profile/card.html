@@ -1,0 +1,6 @@
+{% comment %} Link preview under a post. Param: card (url, host, title, youtube). {% endcomment %}
+{% assign c = include.card %}{% if c %}{% if c.youtube %}
+<a class="tw-media" href="{{ c.url }}" rel="noopener"><span class="tw-yt"><img src="https://i.ytimg.com/vi/{{ c.youtube }}/hqdefault.jpg" alt="" loading="lazy"><span class="tw-play" aria-hidden="true">{% include profile/i.html n="play" %}</span></span><span class="tw-media-cap">youtube.com {% include profile/i.html n="ext" %}</span></a>
+{% else %}
+<a class="tw-link" href="{{ c.url }}" rel="noopener">{% if c.image %}<span class="tw-link-ic tw-link-img" aria-hidden="true"><img src="{{ c.image | relative_url }}" alt="" loading="lazy" width="80" height="80"></span>{% else %}<span class="tw-link-ic" aria-hidden="true">{% include profile/i.html n="link" %}</span>{% endif %}<span class="tw-link-m"><span class="tw-link-d">{{ c.host }}</span><span class="tw-link-t">{{ c.title }}</span></span></a>
+{% endif %}{% endif %}

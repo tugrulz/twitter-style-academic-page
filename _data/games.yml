@@ -1,0 +1,15 @@
+# Side projects shown as posts in the Playground section.
+- kind: game
+  title: Congress of Berlin, 1878
+  url: https://tugrulcan.com/berlin/
+  domain: tugrulcan.com/berlin
+  desc: Draw the fairest Balkan borders of 1878, then watch history unfold.
+  image: /assets/img/games/berlin.jpg
+  alt: 'The Congress of Berlin, 1878: a relief map of the Balkans on a candle-lit desk'
+- kind: game
+  title: Cimbom Striker
+  url: https://tugrulcan.com/cimbom/
+  domain: tugrulcan.com/cimbom
+  desc: Arcade football, now with boss music.
+  image: /assets/img/games/cimbom.jpg
+  alt: 'Cimbom Striker title screen: an 8-bit footballer in Galatasaray colours in front of a packed stadium'

@@ -1,0 +1,124 @@
+# Your profile. Text fields accept HTML (links, <b>, <em>). Remove a block to hide it.
+#   username   -> @handle under your name and on your posts
+#   flags      -> small flags after the affiliation (built in: sco, uk, tr, de, fr, it, nl, jp)
+#   meta       -> lines under the bio (icons: building, mail, cal, link, book, users, ...)
+#   fun_stats  -> joke counters, hidden on phones
+#   pinned     -> pinned post at the top; youtube -> a post about your channel; course -> one teaching post
+#   work_with_me -> the DM that opens from the Work with me buttons (question, then one message per answer)
+#   lab        -> lab card at the top of the Lab section (shown when team.yml has people)
+username: tj
+handle: Assistant Professor · School of Informatics, University of Edinburgh
+tagline: >-
+  I study AI & Social Media: detecting fake / AI content, ensuring productive AI-Human dialogue, and automating science and education.
+flags:
+- id: sco
+  name: Scotland
+- id: uk
+  name: United Kingdom
+- id: tr
+  name: Türkiye
+meta:
+- icon: building
+  html: >-
+    Co-directs <a href="https://smash.inf.ed.ac.uk">SMASH</a> · leads <a href="https://tugrulcan.com/#lab">TRLLAB</a>
+- icon: mail
+  html: <a href="mailto:tugrulcanelmas@gmail.com">tugrulcanelmas@gmail.com</a>
+- icon: cal
+  html: Ph.D. EPFL 2022
+email: tugrulcanelmas@gmail.com
+cv: https://tugrulcan.com/cv.html
+avatar: /assets/img/avatar.png
+banner: /assets/img/banner.png
+banner_alt: >-
+  TRLLAB banner: a line-art turul eagle perched on a blue diamond, with the words Trust, Reasoning & Language Lab
+share_image: /assets/img/share-card.jpg
+favicon: /assets/img/favicon.png
+links:
+- id: scholar
+  label: Google Scholar
+  url: https://scholar.google.com/citations?user=0oyamTsAAAAJ&hl=en
+- id: github
+  label: GitHub
+  url: https://github.com/tugrulz
+- id: linkedin
+  label: LinkedIn
+  url: https://www.linkedin.com/in/tugrulcanelmas/
+- id: twitter
+  label: X / Twitter
+  url: https://x.com/DrTugrulcan
+- id: youtube
+  label: YouTube
+  url: https://www.youtube.com/@tugrulcan
+- id: instagram
+  label: Instagram
+  url: https://www.instagram.com/tugrulcanelmas
+fun_stats:
+- value: 1
+  label: troll
+- value: 0
+  label: bots
+verified: >-
+  This badge was earned, not bought. Credentials on file: papers on bots, trolls, fake trends and synthetic media, and a Ph.D. on compromised accounts.
+pinned:
+  kind: game
+  text: You may be visiting this page to find my viral browser game, <b>The Congress of Berlin</b>.
+  link_text: Click here to play
+  url: https://tugrulcan.com/berlin/
+  domain: tugrulcan.com/berlin
+  image: /assets/img/games/berlin.jpg
+  alt: 'The Congress of Berlin, 1878: a relief map of the Balkans on a candle-lit desk'
+youtube:
+  text: I also make videos in Turkish on my YouTube channel
+  url: https://www.youtube.com/@tugrulcan
+  name: Dr. Tuğrulcan Elmas
+  sub: Turkish-language channel
+course:
+  text: >-
+    I teach <b>Understanding Society with Big Data: Computational Social Science</b> at the University of Edinburgh. The course materials are open to everyone.
+  award: Nominated for a University of Edinburgh Teaching Award
+  links:
+  - url: http://www.drps.ed.ac.uk/25-26/dpt/cxinfr08034.htm
+    host: drps.ed.ac.uk · course page
+    title: 'Understanding Society with Big Data: Computational Social Science'
+    image: /assets/img/cards/drps-ed-ac-uk-d25750.jpg
+  - url: https://opencourse.inf.ed.ac.uk/css
+    host: opencourse.inf.ed.ac.uk
+    title: Open course materials
+    image: /assets/img/cards/opencourse-inf-ed-ac-uk-955b13.jpg
+press_sub: Coverage of my research on fake trends, bots and AI, in English, Turkish and French.
+work_with_me:
+  button: Work with me
+  question: How can I work with you?
+  answers:
+  - >-
+    I am always looking for curious and motivated people to join our research at the intersection of computational social science, NLP, and online safety. If our work resonates with you, please reach out.
+  - >-
+    <b>PhD</b><br>I recruit PhD students through the <a href="https://web.inf.ed.ac.uk/cdt/responsible-nlp">CDT in Responsible Natural Language Processing</a> at the University of Edinburgh. The programme offers fully-funded four-year studentships with a strong cohort and training environment. If you are interested in pursuing a PhD with me, please apply through the CDT and mention my name in your application.
+  - >-
+    <b>Research Assistants</b><br>I occasionally have opportunities for masters and undergraduate research assistantships. If you are a University of Edinburgh student interested in getting hands-on research experience, feel free to contact me with a brief note about your background and interests.
+  - >-
+    I welcome self-sponsored in-person visitor students to the University of Edinburgh and our lab. <strong>We do not have funded internships for non University of Edinburgh students due to employment laws. We do not accommodate online internships.</strong>
+  - >-
+    <b>Masters &amp; Undergraduate Projects</b><br>University of Edinburgh masters and undergraduate students are very welcome to work on dissertation projects with me. For some weird reason, I get too many interests to my projects so cannot cope with emails. Please do not email to me about dissertation projects, I auto-accept everyone.
+path:
+- when: now
+  what: Assistant Professor
+  where: University of Edinburgh
+- when: ''
+  what: Postdoctoral Scholar, OSoMe
+  where: Indiana University Bloomington
+- when: '2022'
+  what: Ph.D.
+  where: EPFL, Lausanne
+- when: ''
+  what: Exchange semester
+  where: National University of Singapore
+- when: '2017'
+  what: B.S. Computer Science, minor Philosophy
+  where: Bilkent University
+lab:
+  name: TRLLAB
+  full: Trust, Reasoning & Language Lab
+  group: SMASH
+  group_url: https://smash.inf.ed.ac.uk
+  blurb: Trolls, bots, AI, LLMs that argue back and agents that do science. Not TROLLAB!

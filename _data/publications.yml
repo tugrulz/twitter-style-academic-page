@@ -1,0 +1,141 @@
+# Publications, grouped by year (newest first): keep each year together.
+# Each paper is shown as a post: tldr is the post text; clicking it reveals the abstract and links.
+#   featured: true      -> listed under Selected Publications (unless a lab member is an author)
+#   first_author / solo_author: true -> badge, and the "first / solo author only" filter
+#   topics: ids from topics.yml
+#   press: coverage links shown under the paper
+# Papers with a lab member (team.yml) among the authors appear as that member's post, "reposted" by you.
+- title: >-
+    ChatGPT vs Teachers vs Students: Large-Scale Analysis of Generative AI Discourse in Education Communities on Reddit
+  authors: Pelin Yüce, Xiangruo Dai, Rebecca Owens, Tuğrulcan Elmas
+  year: 2027
+  type: Full Paper
+  venue: 21st International Conference On Web And Social Media ICWSM 2027
+  venue_short: ICWSM 2027
+  links:
+  - label: arXiv
+    url: https://arxiv.org/abs/2605.17712
+  tldr: >-
+    Analysis of 270k Reddit posts shows AI-in-education discourse shifted from detection-evasion to enforcement — adversarial integrity disputes, mostly student-initiated, dominate the rare cross-role faculty-student contact
+  abstract: >-
+    Generative Artificial Intelligence (GenAI) has prompted significant discussion in education, yet large-scale empirical evidence on how students and teachers perceive and navigate this shift remains limited. We analyse 270k AI-related Reddit posts and comments from 26 education-related subreddits spanning higher education, K-12 teaching, and professional training between November 2022 and April 2026. Topic modelling reveals seventeen themes covering academic integrity, teaching & pedagogy, career anxiety, policy, and niche professional contexts. Discourse evolves from an early detection-and-evasion arms race into a sustained enforcement regime that constructive integration only begins to challenge in mid-2024. Stakeholder communities differ sharply: K-12 teachers foreground cognitive dependency, academics focus on AI detection and deliberation, and professional-programme students concentrate on career anxiety. Sentiment correlates strongly negatively with engagement, showing adversarial
+    enforcement themes mobilise communities far more than constructive integration discourse. Examining where faculty and students meet, we find 17% of threads are cross-role, and one third of such contact occurs in the adversarial themes AI Detection and Misconduct Enforcement. Students initiate 68% of mixed threads, but faculty produce most cross-role replies. Mixed threads contain 2-3 times more records and last 2-4 times longer than same-role threads, making adversarial integrity disputes the center of sustained faculty-student contact. We discuss implications for governance, pedagogical design, and cross-role contact design. The code and data is available
+  topics:
+  - edu
+  - css
+  featured: true
+- title: When Does the Public Become Suspicious of Bots? Demand-Side Evidence from Botometer Query Logs
+  authors: Tuğrulcan Elmas
+  year: 2026
+  type: Preprint
+  venue: ''
+  venue_short: arXiv preprint
+  links:
+  - label: arXiv
+    url: https://arxiv.org/abs/2609.20661
+  tldr: >-
+    Over a million Botometer queries show public bot suspicion spikes during platform crises like the Musk-Twitter dispute and tracks real automation signals — query logs are a new lens on audit-tool use
+  abstract: >-
+    We study private bot-checking behavior from the demand side: when people suspect an account is automated, whom they suspect, and what follows. Using Botometer's server-side query logs, the most widely used bot-detection service, we treat each query as a behavioural trace of suspicion. We analyze over 1 million public checks of Twitter accounts from 2020 to 2023, enriched with 3.2 billion tweets from the contemporaneous 1% public stream. Collective suspicion spikes with platform crises, most sharply around the 2022 Musk-Twitter bot dispute. Checked accounts are older and more prolific, have more followers, and post promotional, political, and crypto content. Accounts that draw collective suspicion have higher bot scores and are more likely to be suspended. Bot-related public attention and Botometer activity are elevated during the same broad periods, although their short-run fluctuations are largely uncoupled. Public feedback focuses on first-person identity claims for humans, and evidence-based
+    arguments citing posting rate, political content, and cross-account coordination for bots and cyborgs. Bot suspicion thus constitutes a mass, distributed form of platform auditing that tracks meaningful signals of automation, establishing audit-tool query logs as a novel lens on public responses to platform manipulation.
+  topics:
+  - manip
+  - css
+  featured: true
+  solo_author: true
+- title: >-
+    How AI Models Manage Epistemic Authority: A Taxonomy and Comparative Analysis of Responses to User Disagreement
+  authors: Riyadh Alnasser, Yusuf Mücahit Çetinkaya, Sumin Zhao, Tuğrulcan Elmas
+  year: 2026
+  type: Full Paper
+  venue: Conference on Empirical Methods in Natural Language Processing (EMNLP 2026)
+  venue_short: EMNLP 2026
+  links:
+  - label: arXiv
+    url: https://arxiv.org/abs/2609.07662
+  tldr: >-
+    Across 14 models and 32,340 responses to user pushback, LLMs validate users 85% of the time yet keep their original claim 65% — and 59% of apologies still maintain it
+  abstract: >-
+    Large language models are increasingly used as sources of advice and information, including in high-stakes settings, yet little is known about how they respond to user disagreement. We study how a model manages its epistemic authority, referring here to its claim to knowledge, competence, or the right to advise, once a user challenges its answer. Building on Conversation Analysis, we introduce a taxonomy of six challenge types and a four-layer framework for analysing each response: whether the original claim is maintained or changed, where authority is located, how the disagreement is socially managed, and what kind of evidential support is offered. We construct a new dataset of 2,310 controlled challenge scenarios and 32,340 corresponding responses from 14 models, and analyse them using our framework with an LLM-as-judge pipeline, providing a vocabulary which future evaluation and benchmark design can build on. We find that models show conflicting behaviour: they validate users in 85%
+    of responses but maintain their original claim in 65%. They explicitly apologise in 33% of responses, yet 59% of those apologies accompany maintenance of the original claim. They transfer authority most often in advice tasks, doing so in 28% of responses and reaching 57% in health advice and 49% in legal advice, compared with 6% in fact and 3% in explanation tasks. Abandonment of the original claim ranges from 0.8% for GPT-5.2 to 40% for DeepSeek 7B, while complete replacement of the original claim is rare overall at 1.5%.
+  topics:
+  - hai
+  featured: true
+- title: Evaluating Image Forgery Detection and Propaganda in Manipulated Images of the Russian Trolls Campaign
+  authors: Basem Mohammed, Yusuf Mücahit Çetinkaya, Tuğrulcan Elmas
+  year: 2026
+  type: Journal Paper
+  venue: IEEE Internet Computing 2026
+  venue_short: IEEE Internet Computing
+  links:
+  - label: PDF
+    url: https://ieeexplore.ieee.org/abstract/document/11557468
+  tldr: >-
+    TruFor is the most consistent image-forgery detector but degrades on edits from tools like Nano Banana — applied to Russian troll images from 2016, it shows low-effort meme edits mainly targeted Hillary Clinton, Bill Clinton, and Barack Obama
+  abstract: >-
+    Generative AI tools have increased the scale and accessibility of deceptive image creation, but the robustness of existing forgery detection methods under emerging editing tools and real-world social media conditions remains uncertain. This study evaluates state-of-the-art image forgery detectors on recent benchmarks and applies the strongest model to a historical influence-campaign case study: Russian troll activity during the 2016 U.S. presidential election. We find that TruFor is the most consistent detector across legacy and recent datasets, but that its performance degrades on edits produced by advanced tools such as Nano Banana. We then deploy a multimodal pipeline combining forgery localization, Optical Character Recognition (OCR), face recognition, and visual-language-model-based annotation to characterize manipulated images in the campaign. Our analysis suggests that Russian troll accounts relied primarily on low-effort meme-style edits and ridicule-oriented reputation attacks,
+    disproportionately targeting prominent U.S. political figures including Hillary Clinton, Bill Clinton, and Barack Obama.
+  topics:
+  - manip
+  featured: true
+- title: >-
+    Humans Cannot Detect AI-Generated Media But Communities May — For Now: Collaborative AI Detection in r/RealOrAI on Reddit
+  authors: Tuğrulcan Elmas
+  year: 2026
+  type: Preprint
+  venue: ''
+  venue_short: arXiv preprint
+  links:
+  - label: arXiv
+    url: https://arxiv.org/abs/2605.24287
+  tldr: >-
+    Reddit's r/RealOrAI community collectively spots AI-generated media with 72% accuracy despite individuals relying mostly on surface-level perceptual cues rather than rarer provenance checks
+  abstract: >-
+    We study human AI-detection behaviour at scale using a year of activity from r/RealOrAI, a Reddit community where users collaboratively assess whether visual media is real or AI-generated. The community is moderated by a bot that solicits verified labels from submitters of self-challenging "[GUESS]" posts and publishes an aggregate community prediction for each post, yielding naturalistic ground truth at scale. Community detection accuracy reaches 72% on [GUESS] posts with a systematic false-positive bias that intensifies over the year as the community's AI-suspicion grows. Using a six-LLM ensemble validated against human-annotated ground truth, we classify 10k reasoning-bearing comments along six cues covering perceptual features, context, consistency, AI knowledge, subject-matter expertise and provenance (tracing the media to its source). Perceptual features (scene, visual artifacts, anatomy physics, lighting, behavior, text, audio) dominate reasoning (70%) while provenance verification
+    is rarest (4%) at the individual level but is amplified 4.3x in community summaries, revealing aggregation as a reliability filter that selectively surfaces diagnostic evidence. These findings reveal the limits of heuristic-based detection and show how online communities collectively navigate an increasingly contested information environment.
+  topics:
+  - manip
+  - hai
+  featured: true
+  solo_author: true
+- title: 'Ephemeral Astroturfing Attacks: The Case of Fake Twitter Trends'
+  authors: Tuğrulcan Elmas, Rebekah Overdorf, Ahmed Furkan Özkalay, Karl Aberer
+  year: 2021
+  type: Full Paper
+  venue: 2021 IEEE European Symposium on Security and Privacy Euro S&P 2021
+  venue_short: Euro S&P 2021
+  links:
+  - label: arXiv
+    url: https://arxiv.org/abs/1910.07783
+  - label: Code
+    url: https://github.com/tugrulz/EphemeralAstroturfing
+  tldr: >-
+    At least 20% of Twitter's global top-10 trends are fake — coordinated accounts inflate topics then delete all traces, leaving no evidence of manipulation
+  abstract: >-
+    We uncover a previously unknown, ongoing astroturfing attack on the popularity mechanisms of social media platforms: ephemeral astroturfing attacks. In this attack, a chosen keyword or topic is artificially promoted by coordinated and inauthentic activity to appear popular, and, crucially, this activity is removed as part of the attack. We observe such attacks on Twitter trends and find that these attacks are not only successful but also pervasive. We detected over 19,000 unique fake trends promoted by over 108,000 accounts, including not only fake but also compromised accounts, many of which remained active and continued participating in the attacks. Trends astroturfed by these attacks account for at least 20% of the top 10 global trends. Ephemeral astroturfing threatens the integrity of popularity mechanisms on social media platforms and by extension the integrity of the platforms.
+  topics:
+  - manip
+  featured: true
+  first_author: true
+  press:
+  - label: The Next Web
+    url: >-
+      https://thenextweb.com/news/twitter-trending-topics-algorithm-has-vulnerability-hackers-using-ephemeral-astroturfing-attacks
+  - label: ACM Technews
+    url: https://technews.acm.org/archives.cfm?fo=2021-06-jun/jun-04-2021.html
+  - label: Le Temps
+    url: https://www.letemps.ch/societe/une-etude-lepfl-indique-20-tendances-twitter-faussees-contenus-ephemeres
+  - label: Mashable ME
+    url: >-
+      https://me.mashable.com/tech/14085/turkish-twitter-being-flooded-with-fake-trends-created-by-bots-that-manipulate-algorithms
+  - label: Atlantic
+    url: https://www.theatlantic.com/technology/archive/2021/09/twitter-should-abolish-trending-topics/620026/
+  - label: Anadolu Agency
+    url: https://www.aa.com.tr/en/world/half-of-twitter-trending-topics-in-turkey-found-to-be-fake/2269405
+  - label: Milliyet
+    url: >-
+      https://www.milliyet.com.tr/yazarlar/savas-onemli/epfl-arastirmasina-gore-turkiye-twitter-gundeminde-yer-alan-trendlerin-yarisi-sahte-6525080
+  - label: Hacker News
+    url: https://news.ycombinator.com/item?id=27368214
+  - label: Ekşi Sözlük
+    url: https://eksisozluk.com/2-haziran-2021-twitter-manipulasyon-ifsasi--6937655

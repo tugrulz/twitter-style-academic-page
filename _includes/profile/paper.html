@@ -1,0 +1,12 @@
+{% comment %} A publication as a post. Params: p (publication), id (unique id for the expanding part), press (show press coverage),
+   who + i: lab member to show it as their post, reposted by me. {% endcomment %}
+{% assign p = include.p %}
+{% capture tags %}{% for t in p.topics %}{% assign tp = site.data.topics | where: "id", t | first %} <button type="button" class="hashtag" data-theme="{{ tp.id }}" style="--c:{{ tp.color }}">#{{ tp.tag }}</button>{% endfor %}{% endcapture %}
+{% capture body %}
+<p class="tw-text">{{ p.tldr | default: p.title }}{{ tags }}</p>
+<div class="embed tw-quote" role="button" tabindex="0" aria-expanded="false" aria-controls="{{ include.id }}" aria-label="{{ p.title | escape }}: show {% if p.abstract %}abstract and links{% else %}links{% endif %}"><span class="embed-k">{{ p.type }}{% if p.venue != "" %} · {{ p.venue }}{% elsif p.venue_short != "" %} · {{ p.venue_short }}{% endif %}</span><span class="embed-t">{{ p.title }}</span><span class="embed-a">{% capture bold_me %}<b class="me">{{ site.title }}</b>{% endcapture %}{{ p.authors | replace: site.title, bold_me }}</span></div>
+{% if include.press and p.press %}<div class="quote"><p class="quote-h">{% include profile/i.html n="news" %}Covered by {{ p.press | size }} outlets</p><p class="quote-list">{% for x in p.press %}<a href="{{ x.url }}" rel="noopener">{{ x.label }}</a>{% endfor %}</p></div>{% endif %}
+<div class="tw-more" id="{{ include.id }}" hidden>{% if p.abstract %}<p class="tw-abs-h">Abstract</p><p class="tw-abs">{{ p.abstract }}</p>{% endif %}<div class="tw-links">{% for l in p.links %}<a class="act" href="{{ l.url }}" rel="noopener">{% if l.label == "Code" %}{% include profile/i.html n="code" %}{% elsif l.label == "Data" %}{% include profile/i.html n="link" %}{% else %}{% include profile/i.html n="ext" %}{% endif %}{{ l.label }}<span class="sr"> for {{ p.title }}</span></a>{% endfor %}</div></div>
+{% endcapture %}
+{% capture ys %}{{ p.year }}{% endcapture %}{% capture kind %}{% if p.venue_short != "" %}{{ p.venue_short }}{% else %}{{ p.type }}{% endif %}{% unless p.venue_short contains ys %} · {{ p.year }}{% endunless %}{% endcapture %}
+<div class="pubwrap" data-topics="{{ p.topics | join: ' ' }}" data-type="{{ p.type }}" data-first="{% if p.first_author or p.solo_author %}1{% endif %}">{% include profile/post.html cls="ptweet" tweet=include.id kind=kind body=body who=include.who i=include.i %}</div>

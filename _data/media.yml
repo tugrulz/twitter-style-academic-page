@@ -1,0 +1,54 @@
+# Media: interviews, videos, op-eds. hidden: true keeps an item off the page.
+- kind: film
+  html: >-
+    Prompted the short film <a href="https://www.youtube.com/watch?v=S4CSIiUr3a0">This AI Makes You Think 2X Faster</a>
+  card:
+    url: https://www.youtube.com/watch?v=S4CSIiUr3a0
+    host: youtube.com
+    title: This AI Makes You Think 2X Faster
+    youtube: S4CSIiUr3a0
+- kind: op-ed
+  html: >-
+    Wrote an op-ed in BirGün on Turkey’s home-grown LLM: <a href="https://www.birgun.net/makale/yerli-yapay-zeka-gulmekten-yardi-661975">Yerli yapay zekâ gülmekten yardı</a>
+  hidden: true
+  card:
+    url: https://www.birgun.net/makale/yerli-yapay-zeka-gulmekten-yardi-661975
+    host: birgun.net
+    title: Yerli yapay zekâ gülmekten yardı
+    image: /assets/img/cards/birgun-net-d665e8.jpg
+- kind: interview
+  html: Interviewed by <a href="https://www.youtube.com/watch?v=UDcsgBqcQQ0">Ali Tarakçı</a>
+  card:
+    url: https://www.youtube.com/watch?v=UDcsgBqcQQ0
+    host: youtube.com
+    title: Ali Tarakçı
+    youtube: UDcsgBqcQQ0
+- kind: interview
+  html: Interviewed by <a href="https://www.youtube.com/watch?v=mxb-6Vbzz-I">Cüneyt Özdemir</a>
+  card:
+    url: https://www.youtube.com/watch?v=mxb-6Vbzz-I
+    host: youtube.com
+    title: Cüneyt Özdemir
+    youtube: mxb-6Vbzz-I
+- kind: interview
+  html: Guest at <a href="https://www.youtube.com/watch?v=enAC3C_Q-44">Dijital Hayat / TRT Radyo</a>
+  card:
+    url: https://www.youtube.com/watch?v=enAC3C_Q-44
+    host: youtube.com
+    title: Dijital Hayat / TRT Radyo
+    youtube: enAC3C_Q-44
+- kind: interview
+  html: >-
+    Interviews as president of <a href="https://www.youtube.com/watch?v=GyJOCltA1Ak&amp;list=PLrrZ8PX0n3IxYN9PcEGmJnGn4nvZypC2-">Turquia1912</a>
+  card:
+    url: https://www.youtube.com/watch?v=GyJOCltA1Ak&list=PLrrZ8PX0n3IxYN9PcEGmJnGn4nvZypC2-
+    host: youtube.com
+    title: Turquia1912
+    youtube: GyJOCltA1Ak
+- kind: film
+  html: Directed the short film <a href="https://www.youtube.com/watch?v=_vbw9gL60gA">Lemongrass</a>
+  card:
+    url: https://www.youtube.com/watch?v=_vbw9gL60gA
+    host: youtube.com
+    title: Lemongrass
+    youtube: _vbw9gL60gA

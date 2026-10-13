@@ -1,0 +1,28 @@
+# News posts, newest first. kind: Service, Grant, Publication or Award (sets the label colour).
+# card (optional): a link preview under the post (url, host, title, image = square thumbnail).
+- kind: Service
+  html: Became a Program Co-Chair for <a href="https://www.icwsm.org/2027/organisation/">ICWSM</a>
+  card:
+    url: https://www.icwsm.org/2027/organisation/
+    host: icwsm.org
+    title: International AAAI Conference on Web and Social Media (ICWSM) 2027
+    image: /assets/img/cards/icwsm-org-e6b2ac.jpg
+- kind: Grant
+  html: >-
+    Awarded <a href="https://gail.ed.ac.uk/gail-funds-five-new-projects-on-ais-impact-and-use">Generative AI Lab Seed Funding</a> for <em>Can LLMs Give Relationship Advice?</em> with Yusuf Mücahit Çetinkaya — the first large-scale, theory-grounded dataset of online relationship narratives and AI-generated advice
+  card:
+    url: https://gail.ed.ac.uk/gail-funds-five-new-projects-on-ais-impact-and-use
+    host: gail.ed.ac.uk
+    title: Generative AI Lab Seed Funding
+    image: /assets/img/cards/gail-ed-ac-uk-e40489.jpg
+- kind: Publication
+  html: >-
+    Book chapter published: <a href="https://teaching-programming.github.io/book/C10_teaching-with-genai.html"><em>An Optimistic Outlook on Teaching, Learning and Assessment for Coding With the Emergence of Generative AI</em></a>
+  card:
+    url: https://teaching-programming.github.io/book/C10_teaching-with-genai.html
+    host: teaching-programming.github.io
+    title: An Optimistic Outlook on Teaching, Learning and Assessment for Coding With the Emergence of Generative AI
+    image: /assets/img/cards/teaching-programming-github-io-06c89c.jpg
+- kind: Award
+  html: >-
+    <em>Understanding Society with Big Data: Computational Social Science</em> nominated for a University of Edinburgh Teaching Award

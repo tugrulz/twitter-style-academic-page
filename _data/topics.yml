@@ -1,0 +1,30 @@
+# Research themes: the "Trending in research" hashtags. Clicking one filters the publication list.
+# id is what publications.yml uses in `topics`.
+- id: manip
+  tag: AIMediaManipulation
+  name: AI-Generated Media & Manipulation Detection
+  short: Manipulation & AI media
+  desc: >-
+    How false and misleading content spreads — coordinated inauthentic behaviour, state censorship, deepfakes and synthetic media. We build detection methods and measure their impact on public discourse.
+  color: '#ef4444'
+- id: hai
+  tag: HumanAIInteraction
+  name: Human–AI Interaction
+  short: Human–AI interaction
+  desc: >-
+    How people use AI assistants in high-stakes domains — relationships, mental health, legal and medical advice — and how LLMs handle disagreement: when they defer, push back, or steer.
+  color: '#a855f7'
+- id: css
+  tag: CompSocialScience
+  name: Computational Social Science
+  short: Computational social science
+  desc: >-
+    Computational methods for large-scale social phenomena: cross-partisan dynamics, political discourse across platforms, gender in online communication, and the pitfalls of social media data.
+  color: '#22c55e'
+- id: edu
+  tag: AutomatingScience
+  name: Automating Science & Education
+  short: AI for science & education
+  desc: >-
+    LLMs and multi-agent systems that accelerate scientific workflows and transform teaching — from automated opinion mining to agent teams writing data-science papers end-to-end.
+  color: '#eab308'

@@ -1,0 +1,37 @@
+# Service. highlight: true shows it first with a "Highlight" label. kind: the small label after your name.
+- kind: service
+  html: Advise BBC fact-checkers on verifying suspected AI-generated images and video
+  highlight: true
+- kind: organising
+  html: Program Co-Chair, <a href="https://www.icwsm.org/2027/organisation/">ICWSM 2027</a>
+  highlight: true
+  card:
+    url: https://www.icwsm.org/2027/organisation/
+    host: icwsm.org
+    title: ICWSM 2027
+    image: /assets/img/cards/icwsm-org-e6b2ac.jpg
+- kind: service
+  html: <a href="https://gail.ed.ac.uk/about-gail/gail-fellows">Generative AI Lab Fellow</a>, University of Edinburgh
+  highlight: true
+  card:
+    url: https://gail.ed.ac.uk/about-gail/gail-fellows
+    host: gail.ed.ac.uk
+    title: Generative AI Lab Fellow
+    image: /assets/img/cards/gail-ed-ac-uk-be557e.jpg
+- kind: organising
+  html: Organiser, <a href="https://sicss.io/2025/edinburgh/">SICSS Edinburgh 2025</a>
+  highlight: true
+  card:
+    url: https://sicss.io/2025/edinburgh/
+    host: sicss.io
+    title: SICSS Edinburgh 2025
+    image: /assets/img/cards/sicss-io-5c48e9.jpg
+- kind: service
+  html: 'University of Edinburgh committees: Ethics, Teaching, Board of Studies'
+- kind: service
+  html: 'PC member: WebSci, ICWSM, CySoc'
+- kind: reviewing
+  html: >-
+    Conference reviewer: Euro S&amp;P 2021, EDBT 2021, ICDE 2020, IEEE CIC 2019, CIKM 2019, WISE 2018, IEEE Big Data 2018
+- kind: reviewing
+  html: 'Journal reviewer: Turkish J. of EE &amp; CS, Online Social Networks and Media, EPJ Data Science, PeerJ'

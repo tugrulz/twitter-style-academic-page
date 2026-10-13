@@ -1,0 +1,13 @@
+# Off the clock: anything else.
+- kind: blog
+  html: >-
+    Deanonymized author of the popular Turkish blog <a href="https://azimliyazar.blogspot.com">azimliyazar.blogspot.com</a> (4M+ views)
+  card:
+    url: https://azimliyazar.blogspot.com
+    host: azimliyazar.blogspot.com
+    title: azimliyazar.blogspot.com
+    image: /assets/img/cards/azimliyazar-blogspot-com-b32a09.jpg
+- kind: community
+  html: President, Switzerland Turkish Student Association (2019–2021)
+- kind: sports
+  html: Bilkent University Ultimate Frisbee (2015–2017), Fencing (2017) and Orienteering (2015) teams

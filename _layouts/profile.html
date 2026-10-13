@@ -1,0 +1,333 @@
+<!doctype html>
+{% comment %}
+  Twitter-style Academic Page — https://github.com/tugrulz/twitter-style-academic-page
+  Created by Tuğrulcan Elmas (https://tugrulcan.com). MIT licence: please keep the credit in the footer.
+
+  Everything you write lives in _data/*.yml; this layout turns it into a social-media-style profile.
+  Sections appear only when their data file has content. assets/js/profile.js adds the interactions.
+{% endcomment %}
+{% assign D = site.data %}{% assign PR = D.profile %}{% assign pubs = D.publications %}{% if pubs == nil %}{% assign pubs = "" | split: "" %}{% endif %}
+{% assign team = D.team.members %}{% assign alumni = D.team.alumni %}
+{% assign n_team = team.size | default: 0 %}{% assign n_alumni = alumni.size | default: 0 %}{% assign n_people = n_team | plus: n_alumni %}
+{% if n_people > 0 %}{% assign people = team | concat: alumni %}{% else %}{% assign people = "" | split: "" %}{% endif %}
+{% assign n_first = 0 %}{% for p in pubs %}{% if p.first_author or p.solo_author %}{% assign n_first = n_first | plus: 1 %}{% endif %}{% endfor %}
+{% assign n_members = 0 %}{% for m in team %}{% unless m.external %}{% assign n_members = n_members | plus: 1 %}{% endunless %}{% endfor %}
+{% capture page_title %}{{ site.title }} · {{ site.position }}, {{ site.affiliation }}{% endcapture %}
+{% assign share_image = PR.share_image | default: '/assets/img/share-card.png' | absolute_url %}
+{% assign avatar = PR.avatar | default: '/assets/img/avatar.png' | relative_url %}
+{% capture n_talks %}{{ D.talks.size | plus: D.media.size }}{% endcapture %}
+{% capture n_play %}{{ D.games.size | plus: D.misc.size }}{% endcapture %}
+{% comment %} The tabs: id|label|short label|icon|shown? {% endcomment %}
+{% capture defs %}posts|Posts|Posts|home|1;papers|Papers|Papers|doc|{{ pubs.size }};lab|Lab|Lab|users|{{ n_people }};teaching|Teaching|Teaching|book|{% if PR.course %}1{% else %}0{% endif %};talks|Talks & Media|Media|mic|{{ n_talks }};service|Service|Service|shield|{{ D.service.size | default: 0 }};playground|Playground|Play|game|{{ n_play }}{% endcapture %}
+{% assign TABS = "" | split: "" %}{% assign all_defs = defs | split: ";" %}
+{% for d in all_defs %}{% assign parts = d | split: "|" %}{% if parts[4] != "0" and parts[4] != "" %}{% assign TABS = TABS | push: d %}{% endif %}{% endfor %}
+<html lang="{{ site.lang | default: 'en' }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ page_title }}</title>
+  <meta name="description" content="{{ site.description | escape }}">
+  {% if site.keywords %}<meta name="keywords" content="{{ site.keywords | escape }}">{% endif %}
+  <meta name="author" content="{{ site.title }}">
+  <meta name="generator" content="Twitter-style Academic Page by Tuğrulcan Elmas">
+  <link rel="canonical" href="{{ page.url | absolute_url }}">
+  <meta name="color-scheme" content="light dark">
+  <!-- link previews (X, LinkedIn, Slack, WhatsApp...) -->
+  <meta property="og:type" content="profile">
+  <meta property="og:site_name" content="{{ site.title }}">
+  <meta property="og:title" content="{{ page_title }}">
+  <meta property="og:description" content="{{ PR.tagline | strip_html | escape }}">
+  <meta property="og:url" content="{{ page.url | absolute_url }}">
+  <meta property="og:image" content="{{ share_image }}">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  {% if site.twitter_handle %}<meta name="twitter:site" content="{{ site.twitter_handle }}"><meta name="twitter:creator" content="{{ site.twitter_handle }}">{% endif %}
+  <meta name="twitter:title" content="{{ page_title }}">
+  <meta name="twitter:description" content="{{ PR.tagline | strip_html | escape }}">
+  <meta name="twitter:image" content="{{ share_image }}">
+  <link rel="icon" href="{{ PR.favicon | default: '/assets/img/favicon.png' | relative_url }}">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ '/assets/css/profile.css' | relative_url }}">
+  <script type="application/ld+json">
+  { "@context": "https://schema.org", "@type": "Person", "name": {{ site.title | jsonify }}, "jobTitle": {{ site.position | jsonify }},
+    "affiliation": { "@type": "Organization", "name": {{ site.affiliation | jsonify }} }, "url": "{{ '/' | absolute_url }}",
+    "image": "{{ PR.avatar | default: '/assets/img/avatar.png' | absolute_url }}",
+    "sameAs": [{% for l in PR.links %}{{ l.url | jsonify }}{% unless forloop.last %}, {% endunless %}{% endfor %}] }
+  </script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  {% include profile/icons.html %}
+
+  <div class="shell side-icons wide">
+    <!-- ============ left: menu ============ -->
+    <header class="side" aria-label="Site">
+      <div class="side-inner">
+        <a class="brand" href="#main" aria-label="{{ site.title }}, home"><img src="{{ PR.favicon | default: '/assets/img/favicon.png' | relative_url }}" alt="" width="32" height="32"><span class="brand-text">{{ site.brand | default: site.title }}</span></a>
+        <nav class="side-nav" aria-label="Sections"><ul>
+          {% for d in TABS %}{% assign t = d | split: "|" %}<li><button type="button" class="side-link" data-tab="{{ t[0] }}" title="{{ t[1] }}">{% assign ic = t[3] %}{% include profile/i.html n=ic %}<span>{{ t[1] }}</span></button></li>{% endfor %}
+        </ul></nav>
+        {% if PR.work_with_me %}<a class="btn btn-primary side-cta" href="#work-with-me" data-dm title="{{ PR.work_with_me.button | default: 'Work with me' }}">{% include profile/i.html n="spark" %}<span>{{ PR.work_with_me.button | default: 'Work with me' }}</span></a>{% endif %}
+        <div class="side-me" aria-hidden="true"><img src="{{ avatar }}" alt="" width="40" height="40"><div><b>{{ site.title }}</b><span>{% if PR.username %}@{{ PR.username }}{% endif %}</span></div></div>
+      </div>
+    </header>
+
+    <!-- ============ centre: profile + timeline ============ -->
+    <div class="center">
+      <main id="main" tabindex="-1">
+        <section class="profile" id="profile" aria-labelledby="who">
+          <div class="cover"><img src="{{ PR.banner | default: '/assets/img/banner.png' | relative_url }}" alt="{{ PR.banner_alt | default: 'Profile banner' | escape }}" width="1500" height="500"></div>
+          <div class="profile-top">
+            <img class="avatar" src="{{ avatar }}" alt="Portrait of {{ site.title }}" width="136" height="136">
+            <div class="profile-actions">
+              {% if PR.cv %}<a class="btn btn-ghost" href="{{ PR.cv }}">CV</a>{% endif %}
+              {% if pubs.size > 0 %}<button type="button" class="btn btn-ghost" data-goto="all-papers">Publications</button>{% endif %}
+              {% if PR.work_with_me %}<a class="btn btn-primary" href="#work-with-me" data-dm>{{ PR.work_with_me.button | default: 'Work with me' }}</a>{% endif %}
+            </div>
+          </div>
+          <div class="profile-body">
+            <h1 id="who" class="name"><span>{{ site.title }}</span><span class="badge-wrap"><button type="button" class="verified" id="verifiedBtn" aria-expanded="false" aria-controls="verifiedPop">{% include profile/i.html n="verified" c="" %}<span class="sr">Verified human: what does this mean?</span></button></span></h1>
+            <div class="verified-pop" id="verifiedPop" role="note" hidden>
+              <p class="vp-h">{% include profile/i.html n="verified" c="vmini" %} Verified human</p>
+              <p>{% if PR.verified %}{{ PR.verified }}{% else %}This badge was earned, not bought. Credentials on file: <b>{{ pubs | size }} papers</b>, <b>{{ n_first }}</b> of them as first author.{% endif %}</p>
+              <p class="vp-small">Verification method: peer review. No subscription required.</p>
+            </div>
+            {% if PR.username %}<p class="at">@{{ PR.username }}</p>{% endif %}
+            <p class="handle">{{ PR.handle }}{% if PR.flags %} <span class="flags">{% for f in PR.flags %}<svg class="flag" role="img" aria-label="{{ f.name }}"><title>{{ f.name }}</title><use href="#f-{{ f.id }}"/></svg>{% endfor %}</span>{% endif %}</p>
+            <p class="bio">{{ PR.tagline }}</p>
+            {% if PR.meta %}<ul class="meta">
+              {% for m in PR.meta %}<li>{% assign ic = m.icon | default: "link" %}{% include profile/i.html n=ic %}<span>{{ m.html }}</span></li>{% endfor %}
+            </ul>{% endif %}
+            <ul class="stats" aria-label="By the numbers">
+              {% if pubs.size > 0 %}<li><button type="button" class="stat" data-goto="all-papers"><b>{{ pubs | size }}</b> papers</button></li>{% endif %}
+              {% if n_members > 0 %}<li><button type="button" class="stat" data-goto="members"><b>{{ n_members }}</b> lab members</button></li>{% endif %}
+              {% if n_alumni > 0 %}<li><button type="button" class="stat" data-goto="alumni"><b>{{ alumni | size }}</b> alumni</button></li>{% endif %}
+              {% if D.games.size > 0 %}<li><button type="button" class="stat" data-goto="games"><b>{{ D.games | size }}</b> games</button></li>{% endif %}
+              {% for s in PR.fun_stats %}<li class="stat-joke"><span class="stat"><b>{{ s.value }}</b> {{ s.label }}</span></li>{% endfor %}
+            </ul>
+            {% assign LINKICON = "scholar:scholar,github:code,linkedin:brief,twitter:at,x:at,youtube:play,instagram:camera,email:mail" | split: "," %}
+            <ul class="links" aria-label="Elsewhere">
+              {% for l in PR.links %}{% assign icon = "link" %}{% for pair in LINKICON %}{% assign kv = pair | split: ":" %}{% if kv[0] == l.id %}{% assign icon = kv[1] %}{% endif %}{% endfor %}
+              <li><a class="link-ico" href="{{ l.url }}" rel="noopener" aria-label="{{ l.label }}" title="{{ l.label }}">{% include profile/i.html n=icon %}<span class="link-label">{{ l.label }}</span></a></li>{% endfor %}
+            </ul>
+          </div>
+        </section>
+
+        <div class="tabbar" id="tabbar">
+          <nav class="tabs" aria-label="Jump to section" id="tablist">
+            {% for d in TABS %}{% assign t = d | split: "|" %}<button type="button" class="tab" id="tab-{{ t[0] }}" data-tab="{{ t[0] }}">{{ t[1] }}</button>{% endfor %}
+          </nav>
+        </div>
+
+        <!-- ===== POSTS ===== -->
+        <section class="panel" id="posts" aria-labelledby="posts-ph" tabindex="-1">
+          <h2 class="panel-h" id="posts-ph">{% include profile/i.html n="home" %}Posts</h2>
+          {% if PR.pinned %}{% capture body %}<p class="tw-text">{{ PR.pinned.text }}{% if PR.pinned.url %} <a href="{{ PR.pinned.url }}">{{ PR.pinned.link_text | default: 'Take a look' }}</a>.{% endif %}</p>
+          {% if PR.pinned.image %}<a class="tw-media" href="{{ PR.pinned.url }}"><img src="{{ PR.pinned.image | relative_url }}" alt="{{ PR.pinned.alt | escape }}" loading="lazy"><span class="tw-media-cap">{{ PR.pinned.domain }} {% include profile/i.html n="ext" %}</span></a>{% endif %}{% endcapture %}
+          {% include profile/post.html id="pinned" cls="pinned" pin="Pinned" kind=PR.pinned.kind body=body %}{% endif %}
+
+          {% if D.news.size > 0 %}<section class="feed-sec no-head" id="news" aria-label="News">
+            {% for n in D.news %}{% capture body %}<p class="tw-text">{{ n.html }}</p>{% include profile/card.html card=n.card %}{% endcapture %}{% capture cls %}news-{{ n.kind | downcase }}{% endcapture %}{% include profile/post.html kind=n.kind cls=cls body=body %}{% endfor %}
+          </section>{% endif %}
+
+          {% if PR.youtube %}{% capture body %}<p class="tw-text">{{ PR.youtube.text }}: <a href="{{ PR.youtube.url }}" rel="noopener">{{ PR.youtube.url | remove: "https://" | remove: "www." }}</a></p>
+          <a class="tw-link tw-link-yt" href="{{ PR.youtube.url }}" rel="noopener"><span class="tw-link-ic" aria-hidden="true">{% include profile/i.html n="play" %}</span><span class="tw-link-m"><span class="tw-link-d">youtube.com</span><span class="tw-link-t">{{ PR.youtube.name }}</span><span class="tw-link-s">{{ PR.youtube.sub }}</span></span></a>{% endcapture %}
+          {% include profile/post.html kind="video" body=body %}{% endif %}
+
+          {% if D.topics.size > 0 %}<div class="only-narrow">
+            <section class="feed-sec" id="themes" aria-labelledby="themes-h"><div class="sec-head"><h3 id="themes-h">Research themes</h3><p>Pick a hashtag to see the papers behind it.</p></div>
+              <div class="pad"><div class="themes hscroll">{% for t in D.topics %}{% assign n = 0 %}{% for p in pubs %}{% if p.topics contains t.id %}{% assign n = n | plus: 1 %}{% endif %}{% endfor %}
+                <button type="button" class="theme" data-theme="{{ t.id }}" style="--c:{{ t.color }}"><span class="theme-tag">#{{ t.tag }}</span><b>{{ t.name }}</b><span class="theme-desc">{{ t.desc }}</span><span class="theme-n">{{ n }} papers {% include profile/i.html n="arrow" %}</span></button>{% endfor %}
+              </div></div>
+            </section>
+          </div>{% endif %}
+        </section>
+
+        {% if pubs.size > 0 %}
+        <!-- ===== PAPERS ===== -->
+        <section class="panel" id="papers" aria-labelledby="papers-ph" tabindex="-1">
+          <h2 class="panel-h" id="papers-ph">{% include profile/i.html n="doc" %}Papers</h2>
+          <section class="feed-sec no-head" id="selected" aria-label="Selected Publications">
+            {% comment %} Featured papers, except those with a lab member among the authors: those appear in the Lab section. {% endcomment %}
+            {% assign k = 0 %}{% for p in pubs %}{% if p.featured %}{% assign lab = false %}{% assign authors = p.authors | split: ", " %}
+              {% for a in authors %}{% for m in people %}{% if m.name == a %}{% assign lab = true %}{% endif %}{% endfor %}{% endfor %}
+              {% unless lab %}{% assign k = k | plus: 1 %}{% capture pid %}sel-{{ k }}{% endcapture %}{% include profile/paper.html p=p id=pid press="1" %}{% endunless %}
+            {% endif %}{% endfor %}
+          </section>
+          {% if D.press.size > 0 %}<section class="feed-sec" id="press" aria-labelledby="press-h"><div class="sec-head"><h3 id="press-h">In the press</h3>{% if PR.press_sub %}<p>{{ PR.press_sub }}</p>{% endif %}</div>
+            <div class="pad"><div class="press-strip" role="list">{% for x in D.press %}<a role="listitem" href="{{ x.url }}" rel="noopener"{% if x.title %} title="{{ x.title | escape }}"{% endif %}>{{ x.label }}</a>{% endfor %}</div></div>
+          </section>{% endif %}
+          <div class="pad all-link"><button type="button" class="reveal" id="allBtn" aria-expanded="false" aria-controls="publications">{% include profile/i.html n="doc" %}<span>Show all {{ pubs | size }} publications</span></button></div>
+        </section>
+        {% endif %}
+
+        {% if n_people > 0 %}
+        <!-- ===== LAB ===== -->
+        <section class="panel" id="lab" aria-labelledby="lab-ph" tabindex="-1">
+          <h2 class="panel-h" id="lab-ph">{% include profile/i.html n="users" %}Lab</h2>
+          {% if PR.lab %}<div class="lab-card">{% if PR.lab.photo %}<img class="lab-photo" src="{{ PR.lab.photo | relative_url }}" alt="The {{ PR.lab.name }} team, group photo" loading="lazy">{% endif %}
+            <div class="lab-body"><p class="eyebrow">{{ PR.lab.name }}{% if PR.lab.group %} · part of {% if PR.lab.group_url %}<a href="{{ PR.lab.group_url }}">{{ PR.lab.group }}</a>{% else %}{{ PR.lab.group }}{% endif %}{% endif %}</p><h3 class="lab-name">{{ PR.lab.full }}</h3>
+              {% if PR.lab.blurb %}<p>{{ PR.lab.blurb }}</p>{% endif %}</div>
+          </div>{% endif %}
+          {% capture members %}<ul class="follow">{% for m in team %}
+            <li>{% include profile/face.html m=m i=forloop.index0 %}<div class="f-who"><b>{{ m.name }}</b><span>{{ m.role }}</span>{% if m.topic %}<span class="f-topic">{{ m.topic }}</span>{% endif %}</div>{% if m.url %}<a class="btn btn-follow" href="{{ m.url }}" rel="noopener">Follow<span class="sr"> {{ m.name }}</span></a>{% endif %}</li>{% endfor %}
+          </ul>{% endcapture %}
+          {% if n_team > 0 %}<div class="only-narrow"><section class="wtf" id="members" aria-labelledby="members-h"><h3 class="wtf-h" id="members-h">Who to follow</h3><p class="wtf-sub">Lab members. All human, we checked.</p>{{ members }}</section></div>{% endif %}
+          {% comment %} Papers with a lab member among the authors, shown as that member's post (the first lab member listed). {% endcomment %}
+          <section class="feed-sec no-head" id="lab-posts" aria-label="Papers from the lab">
+            {% assign k = 0 %}{% for p in pubs %}{% assign who = nil %}{% assign authors = p.authors | split: ", " %}
+              {% for a in authors %}{% unless who %}{% for m in people %}{% if m.name == a %}{% assign who = m %}{% endif %}{% endfor %}{% endunless %}{% endfor %}
+              {% if who %}{% assign k = k | plus: 1 %}{% capture pid %}lab-{{ k }}{% endcapture %}{% include profile/paper.html p=p id=pid who=who i=k %}{% endif %}
+            {% endfor %}
+          </section>
+          {% if n_alumni > 0 %}<section class="feed-sec" id="alumni" aria-labelledby="alumni-h"><div class="sec-head"><h3 id="alumni-h">Alumni</h3></div>
+            <ul class="hscroll alumni-cards">{% for m in alumni %}
+              <li class="acard">{% include profile/face.html m=m i=forloop.index %}<b>{{ m.name }}</b><span class="acard-r">{{ m.role }}</span>{% if m.next %}<span class="acard-n" title="{{ m.next }}">{% include profile/i.html n="arrow" %}<span>{{ m.next }}</span></span>{% endif %}{% if m.url %}<a class="btn btn-follow" href="{{ m.url }}" rel="noopener">Follow<span class="sr"> {{ m.name }}</span></a>{% endif %}</li>{% endfor %}
+            </ul>
+          </section>{% endif %}
+        </section>
+        {% endif %}
+
+        {% if PR.course %}
+        <!-- ===== TEACHING ===== -->
+        <section class="panel" id="teaching" aria-labelledby="teaching-ph" tabindex="-1">
+          <h2 class="panel-h" id="teaching-ph">{% include profile/i.html n="book" %}Teaching</h2>
+          <section class="feed-sec no-head" id="teach-now" aria-label="Teaching">
+            {% capture body %}<p class="tw-text">{{ PR.course.text }}</p>
+            {% if PR.course.award %}<p class="course-award">{% include profile/i.html n="spark" %}{{ PR.course.award }}</p>{% endif %}
+            {% for c in PR.course.links %}{% include profile/card.html card=c %}{% endfor %}{% endcapture %}
+            {% include profile/post.html kind="course" body=body %}
+          </section>
+        </section>
+        {% endif %}
+
+        {% if n_talks != "0" %}
+        <!-- ===== TALKS & MEDIA ===== -->
+        <section class="panel" id="talks" aria-labelledby="talks-ph" tabindex="-1">
+          <h2 class="panel-h" id="talks-ph">{% include profile/i.html n="mic" %}Talks &amp; Media</h2>
+          <section class="feed-sec no-head" id="talks-list" aria-label="Talks and panels">
+            {% for t in D.talks %}{% capture body %}<p class="tw-text">{{ t.html }}</p>{% include profile/card.html card=t.card %}{% endcapture %}{% include profile/post.html kind=t.kind body=body %}{% endfor %}
+          </section>
+          <section class="feed-sec no-head" id="media" aria-label="Media">
+            {% for m in D.media %}{% unless m.hidden %}{% capture body %}<p class="tw-text">{{ m.html }}</p>{% include profile/card.html card=m.card %}{% endcapture %}{% include profile/post.html kind=m.kind body=body %}{% endunless %}{% endfor %}
+          </section>
+        </section>
+        {% endif %}
+
+        {% if D.service.size > 0 %}
+        <!-- ===== SERVICE ===== -->
+        <section class="panel" id="service" aria-labelledby="service-ph" tabindex="-1">
+          <h2 class="panel-h" id="service-ph">{% include profile/i.html n="shield" %}Service</h2>
+          <section class="feed-sec no-head" id="service-hi" aria-label="Highlights">
+            {% for x in D.service %}{% if x.highlight %}{% capture body %}<p class="tw-text">{{ x.html }}</p>{% include profile/card.html card=x.card %}{% endcapture %}{% include profile/post.html kind=x.kind cls="hi-post" pin="Highlight" body=body %}{% endif %}{% endfor %}
+          </section>
+          <section class="feed-sec no-head" id="service-all" aria-label="More service">
+            {% for x in D.service %}{% unless x.highlight %}{% capture body %}<p class="tw-text">{{ x.html }}</p>{% include profile/card.html card=x.card %}{% endcapture %}{% include profile/post.html kind=x.kind body=body %}{% endunless %}{% endfor %}
+          </section>
+        </section>
+        {% endif %}
+
+        {% if n_play != "0" %}
+        <!-- ===== PLAYGROUND ===== -->
+        <section class="panel" id="playground" aria-labelledby="playground-ph" tabindex="-1">
+          <h2 class="panel-h" id="playground-ph">{% include profile/i.html n="game" %}Playground</h2>
+          {% if D.games.size > 0 %}<section class="feed-sec" id="games" aria-labelledby="games-h"><div class="sec-head"><h3 id="games-h">Side projects</h3><p>Things I made for fun.</p></div>
+            {% for g in D.games %}{% capture body %}<p class="tw-text"><b>{{ g.title }}.</b> {{ g.desc }}</p>{% if g.image %}<a class="tw-media" href="{{ g.url }}"><img src="{{ g.image | relative_url }}" alt="{{ g.alt | escape }}" loading="lazy"><span class="tw-media-cap">{{ g.domain }} {% include profile/i.html n="ext" %}</span></a>{% endif %}{% endcapture %}{% include profile/post.html kind=g.kind cls="game-tweet" body=body %}{% endfor %}
+          </section>{% endif %}
+          {% if D.misc.size > 0 %}<section class="feed-sec" id="misc" aria-labelledby="misc-h"><div class="sec-head"><h3 id="misc-h">Off the clock</h3><p>Miscellaneous, but true.</p></div>
+            {% for m in D.misc %}{% capture body %}<p class="tw-text">{{ m.html }}</p>{% include profile/card.html card=m.card %}{% endcapture %}{% include profile/post.html kind=m.kind body=body %}{% endfor %}
+          </section>{% endif %}
+        </section>
+        {% endif %}
+
+        {% if pubs.size > 0 %}
+        <!-- ===== ALL PUBLICATIONS (opened by "Show all publications") ===== -->
+        <section class="panel" id="publications" aria-labelledby="publications-ph" tabindex="-1" hidden>
+          <h2 class="panel-h" id="publications-ph">{% include profile/i.html n="doc" %}All publications</h2>
+          <section class="feed-sec" id="all-papers" aria-labelledby="all-papers-h"><div class="sec-head"><h3 id="all-papers-h">All publications</h3><p>Every paper as a post, newest first. Tap one for the abstract and links.</p></div>
+            <div class="pad"><div class="filters" role="group" aria-label="Filter publications">
+              {% if D.topics.size > 0 %}<div class="frow"><span class="flabel" id="fl-theme">Theme</span><div class="chips" role="group" aria-labelledby="fl-theme">
+                <button type="button" class="chip" data-ftheme="all" aria-pressed="true">All <span>{{ pubs | size }}</span></button>
+                {% for t in D.topics %}{% assign n = 0 %}{% for p in pubs %}{% if p.topics contains t.id %}{% assign n = n | plus: 1 %}{% endif %}{% endfor %}<button type="button" class="chip" data-ftheme="{{ t.id }}" aria-pressed="false" style="--c:{{ t.color }}"><i class="dot"></i>{{ t.short }} <span>{{ n }}</span></button>{% endfor %}
+              </div></div>{% endif %}
+              <div class="frow"><span class="flabel" id="fl-type">Type</span><div class="chips" role="group" aria-labelledby="fl-type">
+                <button type="button" class="chip" data-ftype="all" aria-pressed="true">All</button>
+                {% assign types = pubs | map: "type" | uniq %}{% for ty in types %}{% assign n = pubs | where: "type", ty | size %}<button type="button" class="chip" data-ftype="{{ ty }}" aria-pressed="false">{{ ty }} <span>{{ n }}</span></button>{% endfor %}
+              </div></div>
+              <div class="frow fstatus"><p id="pubStatus" aria-live="polite">Showing {{ pubs | size }} of {{ pubs | size }} papers</p></div>
+            </div></div>
+            <div id="pubList">
+              {% assign year = 0 %}{% for p in pubs %}{% if p.year != year %}{% unless forloop.first %}</div></div>{% endunless %}{% assign year = p.year %}{% assign n = pubs | where: "year", year | size %}
+              <div class="year" data-year="{{ year }}"><h4 class="year-h"><span>{{ year }}</span><small>{{ n }} {% if n == 1 %}paper{% else %}papers{% endif %}</small></h4><div class="tweets">{% endif %}
+                {% assign who = nil %}{% assign authors = p.authors | split: ", " %}{% for a in authors %}{% unless who %}{% for m in people %}{% if m.name == a %}{% assign who = m %}{% endif %}{% endfor %}{% endunless %}{% endfor %}
+                {% capture pid %}tw-{{ forloop.index }}{% endcapture %}{% include profile/paper.html p=p id=pid who=who i=forloop.index %}
+              {% if forloop.last %}</div></div>{% endif %}{% endfor %}
+              <p class="empty" id="pubEmpty" hidden>No papers match these filters. Suspiciously quiet.</p>
+            </div>
+            <div class="pad"><button type="button" class="reveal" id="allHide">{% include profile/i.html n="chev" c="ico chev up" %}<span>Hide all publications</span></button></div>
+          </section>
+        </section>
+        {% endif %}
+      </main>
+
+      <footer class="foot"><div class="foot-in">
+        <p class="foot-h">{% include profile/i.html n="verified" c="vmini" %} {{ site.title }}</p>
+        <p>{{ PR.handle }}{% if PR.email %}. <a href="mailto:{{ PR.email }}">{{ PR.email }}</a>{% endif %}</p>
+        <ul class="foot-links">{% for l in PR.links %}<li><a href="{{ l.url }}" rel="noopener">{{ l.label }}</a></li>{% endfor %}{% if PR.cv %}<li><a href="{{ PR.cv }}">CV</a></li>{% endif %}</ul>
+        <p class="foot-small">© {{ site.time | date: "%Y" }} {{ site.title }} · No followers were purchased in the making of this page.</p>
+        <p class="foot-small foot-credit">Theme: <a href="https://github.com/tugrulz/twitter-style-academic-page">Twitter-style Academic Page</a> by <a href="https://tugrulcan.com">Tuğrulcan Elmas</a></p>
+      </div></footer>
+    </div>
+
+    <!-- ============ right rail ============ -->
+    <aside class="rail" aria-label="Sidebar"><div class="rail-inner">
+      {% if n_team > 0 %}<section class="card" id="rail-members" aria-labelledby="rmem-h"><h2 id="rmem-h" class="card-h">Who to follow</h2><p class="card-sub">Lab members. All human, we checked.</p>{{ members }}</section>{% endif %}
+      {% if D.topics.size > 0 %}<section class="card" aria-labelledby="trend-h"><h2 id="trend-h" class="card-h">Trending in research</h2><p class="card-sub">Organic. Counts are real papers, not retweets.</p>
+        <ol class="trends" id="trends">{% for t in D.topics %}{% assign n = 0 %}{% for p in pubs %}{% if p.topics contains t.id %}{% assign n = n | plus: 1 %}{% endif %}{% endfor %}
+          <li data-count="{{ n }}"><button type="button" class="trend" data-theme="{{ t.id }}" aria-pressed="false" style="--c:{{ t.color }}"><span class="trend-k"><span class="trend-i">{{ forloop.index }}</span> · Trending in Research</span><span class="trend-t">#{{ t.tag }}</span><span class="trend-n">{{ n }} papers · {{ t.short }}</span></button></li>{% endfor %}
+        </ol>
+      </section>{% endif %}
+      {% if PR.path %}<section class="card" id="rail-path" aria-labelledby="rpath-h"><h2 id="rpath-h" class="card-h">Path</h2><p class="card-sub">How the account got here.</p>
+        <div class="rail-pad rail-path"><ol class="path">{% for s in PR.path %}<li><span class="path-when">{% if s.when == "now" %}Now{% elsif s.when %}{{ s.when }}{% else %}·{% endif %}</span><div><b>{{ s.what }}</b><span>{{ s.where }}</span></div></li>{% endfor %}</ol></div>
+      </section>{% endif %}
+      <p class="rail-foot">© {{ site.time | date: "%Y" }} {{ site.title }}{% if PR.cv %} · <a href="{{ PR.cv }}">CV</a>{% endif %}</p>
+    </div></aside>
+  </div>
+
+  {% if PR.work_with_me %}
+  <!-- ===== Work with me, as a direct message ===== -->
+  {% assign W = PR.work_with_me %}
+  <div class="dm" id="work-with-me" role="dialog" aria-modal="true" aria-labelledby="dm-title" hidden>
+    <div class="dm-panel">
+      <header class="dm-head">
+        <img class="dm-av" src="{{ avatar }}" alt="" width="36" height="36">
+        <div class="dm-who"><b id="dm-title">{{ site.title }} {% include profile/i.html n="verified" c="vmini" %}</b><span>{% if PR.username %}@{{ PR.username }}{% endif %}</span></div>
+        <a class="dm-close" href="#" aria-label="Close">{% include profile/i.html n="x" %}</a>
+      </header>
+      <div class="dm-body" aria-live="polite">
+        <p class="dm-day">Today</p>
+        <div class="dm-msg out" data-step="0"><p>{{ W.question }}</p></div>
+        <p class="dm-seen" data-step="0">Seen</p>
+        {% for a in W.answers %}<div class="dm-msg in{% if forloop.last %} last{% endif %}" data-step="{{ forloop.index }}"><img class="dm-mini" src="{{ avatar }}" alt="" width="28" height="28"><p>{{ a }}</p></div>
+        {% endfor %}<div class="dm-msg in typing" hidden aria-hidden="true"><img class="dm-mini" src="{{ avatar }}" alt="" width="28" height="28"><p><i></i><i></i><i></i></p></div>
+      </div>
+      <footer class="dm-compose">
+        <div class="dm-input" aria-hidden="true"><span class="dm-draft"></span><span class="dm-ph">Start a new message</span></div>
+        {% if PR.email %}<a class="dm-send" href="mailto:{{ PR.email }}" aria-label="Email {{ site.title }}" title="Email {{ PR.email }}">{% include profile/i.html n="send" %}</a>{% endif %}
+      </footer>
+    </div>
+  </div>
+  {% endif %}
+
+  {% comment %} phone bar: every section except Service, at most 6 {% endcomment %}
+  {% assign bb = "" | split: "" %}{% for d in TABS %}{% unless d contains "service|" %}{% assign bb = bb | push: d %}{% endunless %}{% endfor %}
+  <nav class="bottombar" aria-label="Sections (phone)"><ul id="bottomNav" style="grid-template-columns: repeat({% if bb.size > 6 %}6{% else %}{{ bb.size }}{% endif %}, 1fr)">
+    {% for d in bb limit: 6 %}{% assign t = d | split: "|" %}<li><button type="button" class="bb" data-tab="{{ t[0] }}">{% assign ic = t[3] %}{% include profile/i.html n=ic %}<span>{{ t[2] }}</span></button></li>{% endfor %}
+  </ul></nav>
+
+  <script src="{{ '/assets/js/profile.js' | relative_url }}"></script>
+</body>
+</html>

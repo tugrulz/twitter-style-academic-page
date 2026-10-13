@@ -1,0 +1,21 @@
+# Lab members (right sidebar "Who to follow") and alumni (carousel in the Lab section).
+# The Lab section appears as soon as someone is listed here. Papers in publications.yml with a member
+# among the authors then show as that member's post, "reposted" by you.
+#   photo: a square image (optional, otherwise coloured initials)
+#   topic: one line about their research
+#   url: where the Follow button goes
+#   external: true -> listed, but not counted in "lab members"
+#
+# members:
+#   - name: "Ada Lovelace"
+#     role: "PhD student"
+#     topic: "LLMs & agents"
+#     photo: "/assets/img/team/ada-lovelace.jpg"
+#     url: "https://www.linkedin.com/in/..."
+#
+# alumni:
+#   - name: "Alan Turing"
+#     role: "MSc"
+#     next: "Bletchley Park"
+members: []
+alumni: []

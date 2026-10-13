@@ -1,0 +1,10 @@
+{% comment %} A post in the timeline. Params: body (html), kind, cls, id, pin, badge, tweet (id of the part it expands),
+   who + i: a lab member as the author (shown as reposted by me). {% endcomment %}
+<article class="post{% if include.cls %} {{ include.cls }}{% endif %}"{% if include.id %} id="{{ include.id }}"{% endif %}{% if include.tweet %} data-tweet="{{ include.tweet }}"{% endif %}>
+  {% if include.pin %}<p class="pin-label">{% include profile/i.html n="pin" %}{{ include.pin }}</p>{% endif %}
+  {% if include.who %}<p class="pin-label">{% include profile/i.html n="repost" %}{{ site.title }} reposted</p>{% endif %}
+  <div class="post-grid">{% if include.who %}<span class="pav-face">{% include profile/face.html m=include.who i=include.i %}</span>{% else %}<img class="pav" src="{{ '/assets/img/avatar.png' | relative_url }}" alt="" width="44" height="44">{% endif %}<div class="post-main">
+    <div class="post-head"><b>{% if include.who %}{{ include.who.name }}{% else %}{{ site.title }}{% endif %}</b>{% include profile/i.html n="verified" c="vmini" %}{% unless include.who %}{% if site.data.profile.username %}<span class="muted at-sm">@{{ site.data.profile.username }}</span>{% endif %}{% endunless %}{% if include.kind %}<span class="muted">· {{ include.kind }}</span>{% endif %}{{ include.badge }}<button type="button" class="share-btn" aria-haspopup="menu" title="Share this post">{% include profile/i.html n="share" %}<span>Share</span></button></div>
+    {{ include.body }}
+  </div></div>
+</article>

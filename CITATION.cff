@@ -1,0 +1,18 @@
+cff-version: 1.2.0
+message: "If you use or write about this template, please cite it as below."
+title: "Twitter-style Academic Page"
+type: software
+authors:
+  - family-names: "Elmas"
+    given-names: "Tuğrulcan"
+    affiliation: "University of Edinburgh"
+    website: "https://tugrulcan.com"
+repository-code: "https://github.com/tugrulz/twitter-style-academic-page"
+url: "https://tugrulcan.com/twitter-style-academic-page/"
+license: MIT
+date-released: "2026-10-13"
+keywords:
+  - academic website
+  - jekyll
+  - github pages
+  - template

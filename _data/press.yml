@@ -1,0 +1,43 @@
+# In the press. title shows on hover.
+- label: The Next Web
+  url: >-
+    https://thenextweb.com/news/twitter-trending-topics-algorithm-has-vulnerability-hackers-using-ephemeral-astroturfing-attacks
+- label: ACM Technews
+  url: https://technews.acm.org/archives.cfm?fo=2021-06-jun/jun-04-2021.html
+- label: Le Temps
+  url: https://www.letemps.ch/societe/une-etude-lepfl-indique-20-tendances-twitter-faussees-contenus-ephemeres
+- label: Mashable ME
+  url: >-
+    https://me.mashable.com/tech/14085/turkish-twitter-being-flooded-with-fake-trends-created-by-bots-that-manipulate-algorithms
+- label: Atlantic
+  url: https://www.theatlantic.com/technology/archive/2021/09/twitter-should-abolish-trending-topics/620026/
+- label: Anadolu Agency
+  url: https://www.aa.com.tr/en/world/half-of-twitter-trending-topics-in-turkey-found-to-be-fake/2269405
+- label: Milliyet
+  url: >-
+    https://www.milliyet.com.tr/yazarlar/savas-onemli/epfl-arastirmasina-gore-turkiye-twitter-gundeminde-yer-alan-trendlerin-yarisi-sahte-6525080
+- label: Hacker News
+  url: https://news.ycombinator.com/item?id=27368214
+- label: Ekşi Sözlük
+  url: https://eksisozluk.com/2-haziran-2021-twitter-manipulasyon-ifsasi--6937655
+- label: Middle East Eye
+  url: https://www.middleeasteye.net/news/turkey-elections-thousands-russian-speaking-accounts-activated-twitter
+  title: 'Turkey elections: Russian Twitter accounts reactivated (2023)'
+- label: Hürriyet Daily News
+  url: https://www.hurriyetdailynews.com/half-of-twitter-trending-topics-in-turkey-fake-report-165435
+  title: Half of Twitter trending topics in Turkey fake (2021)
+- label: EPFL News
+  url: https://actu.epfl.ch/news/mass-scale-manipulation-of-twitter-trends-discov-2/
+  title: Mass scale manipulation of Twitter Trends discovered (2021)
+- label: Webtekno
+  url: https://www.webtekno.com/arastirmaya-gore-turkiye-twitter-trendlerinin-neredeyse-yarisi-sahte-h110663.html
+  title: Türkiye’deki Twitter trendlerinin yarısı sahte (2021)
+- label: Doğrula
+  url: https://www.dogrula.org/ekipten/inceleme-twitter-gundemini-bot-ordusu-belirliyor/
+  title: Twitter gündemini bot ordusu belirliyor (2021)
+- label: Teyit
+  url: https://teyit.org/teyitpedia/gundem-manipulasyonu-twitterdaki-sahte-trendler-nasil-tespit-edilir
+  title: 'Gündem manipülasyonu: Twitter’daki sahte trendler nasıl tespit edilir? (2023, interview)'
+- label: RC Trust
+  url: https://rc-trust.ai/news/news-detail/when-should-ai-know-better-and-humans-stay-in-control
+  title: When should AI know better, and humans stay in control? (2026)

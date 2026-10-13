@@ -1,0 +1,31 @@
+# ─────────────────────────────────────────────────────────────────────────────
+#  Twitter-style Academic Page · https://github.com/tugrulz/twitter-style-academic-page
+#  Created by Tuğrulcan Elmas (https://tugrulcan.com)
+#
+#  This repository ships with its creator's profile as the example: make it yours.
+#  1. Fill in the lines below.
+#  2. Put your content in _data/*.yml (start with _data/profile.yml).
+#  3. Replace the images in assets/img/.
+# ─────────────────────────────────────────────────────────────────────────────
+
+title: Tuğrulcan Elmas                # your name, exactly as it appears in author lists (it gets bolded)
+position: Assistant Professor
+affiliation: University of Edinburgh
+description: >-
+  Tuğrulcan Elmas, Assistant Professor at the University of Edinburgh, working on AI & social media:
+  detecting fake / AI-generated content, human–AI dialogue, and automating science and education.
+
+url: "https://tugrulcan.com"          # where the site lives (used for link previews)
+baseurl: ""                           # leave empty; the included GitHub Actions workflow sets it for project pages
+brand: tugrulcan.com                  # the small text next to the logo, top left
+twitter_handle: "@DrTugrulcan"        # optional: your X account, for link previews
+lang: en
+
+exclude:
+  - README.md
+  - LICENSE
+  - CITATION.cff
+  - Gemfile
+  - Gemfile.lock
+  - vendor
+  - docs
