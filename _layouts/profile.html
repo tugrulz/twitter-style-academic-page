@@ -50,7 +50,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="{{ '/assets/css/profile.css' | relative_url }}">
+  <link rel="stylesheet" href="{{ '/assets/css/profile.css' | relative_url }}?v={{ site.time | date: '%s' }}">
   <script type="application/ld+json">
   { "@context": "https://schema.org", "@type": "Person", "name": {{ site.title | jsonify }}, "jobTitle": {{ site.position | jsonify }},
     "affiliation": { "@type": "Organization", "name": {{ site.affiliation | jsonify }} }, "url": "{{ '/' | absolute_url }}",
@@ -328,6 +328,6 @@
     {% for d in bb limit: 6 %}{% assign t = d | split: "|" %}<li><button type="button" class="bb" data-tab="{{ t[0] }}">{% assign ic = t[3] %}{% include profile/i.html n=ic %}<span>{{ t[2] }}</span></button></li>{% endfor %}
   </ul></nav>
 
-  <script src="{{ '/assets/js/profile.js' | relative_url }}"></script>
+  <script src="{{ '/assets/js/profile.js' | relative_url }}?v={{ site.time | date: '%s' }}"></script>
 </body>
 </html>
